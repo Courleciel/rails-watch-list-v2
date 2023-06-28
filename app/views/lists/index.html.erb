@@ -1,5 +1,23 @@
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);">
+  <div class="container text-center">
+    <h1>Save any kind of movie !</h1>
+    <p>Classic</p>
+  </div>
+</div>
+
+<div class="container mt-5">
+<h1>My Lists</h1>
+  <div class="cards mt-3">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class: "card-link" do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.image_url.blank? ? 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80' : list.image_url %>)">
+      <%= list.name %>
+    </div>
+    <% end %>
   <% end %>
-</ul>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-warning rounded-pill mt-3 mb-3" %>
+  </div>
+</div>

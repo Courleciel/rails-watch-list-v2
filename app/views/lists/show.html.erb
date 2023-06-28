@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url.blank? ? 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80' : @list.image_url %>)">
+  <div class="container text-center">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="d-flex flex-wrap">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card m-3" style="width: 18rem;">
+        <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= bookmark.movie.title %></h5>
+          <p class="card-text"><%= bookmark.movie.overview %></p>
+          <p class="small float-start"><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-warning rounded-pill mt-3 mb-3" %>
+  </div>
+</div>
